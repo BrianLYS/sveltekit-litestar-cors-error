@@ -1,4 +1,4 @@
-# Dwarfsky-Fullstack Web Application
+# Sveltekit-Litestar-Fullstack Web Application
 This project integrates sveltekit, litestar, and piccolo to create a fullstack web application.
 
 [backend](backend/README.md)
