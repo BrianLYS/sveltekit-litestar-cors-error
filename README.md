@@ -7,6 +7,21 @@ This project integrates sveltekit, litestar, and piccolo to create a fullstack w
 ## Testing API
 Visit [API documentation](http://localhost:8000/schema/swagger) to test the API
 
+## Running the application
+sveltekit
+```bash
+cd frontend/app
+# set .env variables
+cp .env.example .env
+pnpm install
+pnpm run dev
+```
+
+backend
+```bash
+docker compose up
+```
+
 ## Dependencies
 Node v20.10.0
 - sveltekit
@@ -20,4 +35,4 @@ Python 3.11
 
 External
 - docker
-- postgres: If not installed, you can use docker to run a postgres container
+- or postgres if no docker

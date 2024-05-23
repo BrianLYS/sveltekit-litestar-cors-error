@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  litestar-backend:
+    build:
+      context: .
+      dockerfile: z_docker/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - ENVIRONMENT=staging
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+    command: ["sh", "-c", "./init_admin.sh && litestar run --host 0.0.0.0 --port 8000"]
+    networks:
+      - app-network
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    
+  caddy:
+      image: caddy:latest
+      volumes:
+        - ./z_docker/Caddyfile:/etc/caddy/Caddyfile
+      ports:
+        - "80:80"
+        - "443:443"
+      networks:
+        - app-network
+
+volumes:
+  postgres_data:
+networks:
+  app-network:
+    driver: bridge
