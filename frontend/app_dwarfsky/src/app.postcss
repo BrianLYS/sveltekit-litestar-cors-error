@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+/* Global Styles */
+
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+
+/* Typography --- */
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.font-heading-token {
+	font-weight: bold;
+}
+.h1 {
+	@apply lg:!text-7xl;
+}
+
+/* Page --- */
+
+.section-padding {
+	@apply p-5 md:p-10;
+}
+
+/* Tailwind Typography Plug (.prose) */
+/* Provides default styling for the Tailwind Typography plugin via element modifiers. */
+/* https://tailwindcss.com/docs/typography-plugin */
+/* https://tailwindcss.com/docs/typography-plugin#element-modifiers */
+
+.prose {
+	/* Text Neutral */
+	@apply prose-headings:text-surface-900 dark:prose-headings:text-surface-50;
+	@apply prose-p:text-surface-900/75 dark:prose-p:text-surface-50/75;
+	@apply prose-strong:font-bold prose-strong:text-surface-900/75 dark:prose-strong:text-surface-50/75;
+	@apply prose-ul:text-surface-900/75 dark:prose-ul:text-surface-50/75;
+	@apply prose-ol:text-surface-900/75 dark:prose-ol:text-surface-50/75;
+	@apply prose-table:text-surface-900/75 dark:prose-table:text-surface-50/75;
+	/* Text Colors */
+	@apply prose-a:!text-primary-500;
+	/* Images */
+	@apply prose-img:mx-auto;
+}
+
+/* <code> elements */
+.prose pre:not(.code-block pre) {
+	@apply font-mono text-base bg-neutral-900/90 text-white p-4 whitespace-pre-wrap overflow-x-auto rounded-container-token;
+}
+.prose code:is(:not(pre *)) {
+	@apply font-mono text-xs text-primary-700 dark:text-primary-400 whitespace-nowrap;
+	@apply bg-primary-500/30 dark:bg-primary-500/20;
+	@apply py-0.5 px-1 rounded;
+}

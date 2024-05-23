@@ -1,0 +1,9 @@
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.ruff]
+line-length = 120
+select = ["F"]
+
+[tool.djlint]
+profile="jinja"
